@@ -1,5 +1,5 @@
-# docker build -t ponsfrilus/fluffy-funicular .
-# docker run -it --rm --name fluffy-funicular -v `pwd`/data:/app/data ponsfrilus/fluffy-funicular
+# docker build -t epfldojo/fluffy-funicular .
+# docker run -it --rm --name fluffy-funicular -v `pwd`/data:/app/data epfldojo/fluffy-funicular
 
 # https://github.com/nodejs/docker-node
 FROM node:6.3.0
