@@ -3,8 +3,8 @@
  */
 var Twitter = require('twitter'),
     fs = require("fs"),
-    secrets = JSON.parse(fs.readFileSync('secrets.json', 'utf8')),
-    funicularData = JSON.parse(fs.readFileSync('funicular_data.json', 'utf8')),
+    secrets = JSON.parse(fs.readFileSync('data/secrets.json', 'utf8')),
+    funicularData = JSON.parse(fs.readFileSync('data/funicular_data.json', 'utf8')),
     cron = require('node-cron'),
     TelegramBot = require('node-telegram-bot-api'), // https://github.com/yagop/node-telegram-bot-api
     token = secrets['telegram_token'],
@@ -21,7 +21,7 @@ var Twitter = require('twitter'),
  TODO: https://www.npmjs.com/package/jsonfile
  */
 function writeToData(myData) {
-    var outputFilename = 'funicular_data.json';
+    var outputFilename = 'data/funicular_data.json';
     fs.writeFile(outputFilename, JSON.stringify(myData, null, 2), function (err) {
         if (err) {
             console.log(err);
@@ -57,6 +57,13 @@ funicularData.twitterUsersToListenTo.forEach(function (screen_name) {
 });
 
 /*
+ Telegram start function
+ */
+bot.onText(/start/, function (msg) {
+   var txt = "Fluffy Funicular will push you new tweets from some pre-selected twitter account. Use /subscribe to activate the bot and /quit to unsubscribe. Have fun 👍";
+   bot.sendMessage(msg.from.id, txt);
+});
+/*
  Telegram subscribe function
  */
 bot.onText(/[Ss]ubscribe/, function (msg, match) {
@@ -88,7 +95,7 @@ bot.onText(/[Qq]uit/, function (msg, match) {
 
 function sendNewTweetToTelegram(data) {
     // TODO: find a better way to reload the date (fs-watcher?)
-    reloadedFunicularData = JSON.parse(fs.readFileSync('funicular_data.json', 'utf8'));
+    reloadedFunicularData = JSON.parse(fs.readFileSync('data/funicular_data.json', 'utf8'));
     console.log(data);
     tweet = "🚟 This is @" + data.user.screen_name + "'s new tweet:";
     tweet += "\n\n";

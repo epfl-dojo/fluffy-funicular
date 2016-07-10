@@ -1,0 +1,38 @@
+{
+  "twitterUsersToListenTo": [
+    "@PHP_CEO",
+    "@hipsterhacker",
+    "@NeckbeardHacker",
+    "@ponsfrilus"
+  ],
+  "telegramUsersToUpdate": {
+    "9917772": {
+      "id": 9917772,
+      "first_name": "Nicolas",
+      "last_name": "B.",
+      "username": "ponsfrilus"
+    }
+  },
+  "twitterUsersData": {
+    "@PHP_CEO": {
+      "lastTweetID": 751085050595315700,
+      "lastTweetIDstr": "751085050595315712",
+      "lastTweetCreateAt": "Thu Jul 07 16:06:45 +0000 2016"
+    },
+    "@hipsterhacker": {
+      "lastTweetID": 746411029752483800,
+      "lastTweetIDstr": "746411029752483841",
+      "lastTweetCreateAt": "Fri Jun 24 18:33:51 +0000 2016"
+    },
+    "@NeckbeardHacker": {
+      "lastTweetID": 750684892544045000,
+      "lastTweetIDstr": "750684892544045056",
+      "lastTweetCreateAt": "Wed Jul 06 13:36:40 +0000 2016"
+    },
+    "@ponsfrilus": {
+      "lastTweetID": 750581773130666000,
+      "lastTweetIDstr": "750581773130665984",
+      "lastTweetCreateAt": "Wed Jul 06 06:46:54 +0000 2016"
+    }
+  }
+}

@@ -43,4 +43,4 @@ jspm_packages
 
 # Fluffy Funicular Ignore
 mysecret.md
-secrets.json
+data/secrets.json

@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npm install && nodejs index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/epfl-dojo/fluffy-funicular.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "@ponsfrilus",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/epfl-dojo/fluffy-funicular/issues"
   },
