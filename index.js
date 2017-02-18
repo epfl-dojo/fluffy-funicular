@@ -38,7 +38,7 @@ function writeToData(myData) {
 funicularData.twitterUsersToListenTo.forEach(function (screen_name) {
     client.get('statuses/user_timeline', {screen_name: screen_name, count: 2}, function (error, tweets, response) {
         if (!error) {
-            debug = true;
+            debug = false;
             if (debug) { // Take previous last tweet to fake a new tweet (test purpose)
                 console.dir(tweets[1].created_at + " " + tweets[1].id);
                 funicularData.twitterUsersData[screen_name] = {};
