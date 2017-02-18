@@ -76,7 +76,10 @@ bot.onText(/[Ss]ubscribe/, function (msg, match) {
     writeToData(funicularData);
 
     console.log(" - log: #" + msg.from.id + " (" + msg.from.first_name + " " + msg.from.last_name + " aka " + msg.from.username + ") subscribed");
-    bot.sendMessage(9917772, " - log: #" + msg.from.id + " (" + msg.from.first_name + " " + msg.from.last_name + " aka " + msg.from.username + ") subscribed");
+    // send msg to myself to keep trace of subscription
+    newSubscriber = "🚟 @fluffy_funicular_bot has a new subscriber\n";
+    newSubscriber = "#newsubscriber: id=" + msg.from.id + "(" + msg.from.first_name + " " + msg.from.last_name + " aka " + msg.from.username + ")";
+    bot.sendMessage(9917772, newSubscriber);
     // TODO: send subscription link in X messages
     bot.sendMessage(msg.from.id, "Thanks, you've subscribed to " + twitterUsersLinks.join(", "));
 });
