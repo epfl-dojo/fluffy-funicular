@@ -1,13 +1,17 @@
 [Unit]
 Description=FluffyFunicular
+Requires=docker.service
+After=docker.service
 
 [Service]
 TimeoutStartSec=10m
 ExecStartPre=/usr/bin/docker pull epfldojo/fluffy-funicular
-ExecStartPre=/usr/bin/sh -c '/usr/bin/docker rm -f fluffy-funicular || true'
+ExecStartPre=-/usr/bin/docker kill fluffy-funicular
+ExecStartPre=-/usr/bin/docker rm -f fluffy-funicular
 ExecStart=/usr/bin/sh -c 'docker run -t --rm --name fluffy-funicular -v /home/core/fluffy-funicular/data:/app/data epfldojo/fluffy-funicular'
 ExecStop=/usr/bin/docker kill fluffy-funicular
 Restart=on-failure
+StartLimitInterval=60s
 
 [X-Fleet]
 X-Conflicts=FluffyFunicular.service

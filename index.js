@@ -80,7 +80,6 @@ bot.onText(/[Ss]ubscribe/, function (msg, match) {
     newSubscriber = "🚟 @fluffy_funicular_bot has a new subscriber\n";
     newSubscriber += "#newsubscriber: id=" + msg.from.id + "(" + msg.from.first_name + " " + msg.from.last_name + " aka " + msg.from.username + ")";
     bot.sendMessage(9917772, newSubscriber);
-    // TODO: send subscription link in X messages
     bot.sendMessage(msg.from.id, "Thanks, you've subscribed to " + twitterUsersLinks.join(", "));
 });
 
@@ -92,7 +91,10 @@ bot.onText(/[Qq]uit/, function (msg, match) {
     writeToData(funicularData);
 
     console.log(" - log: #" + msg.from.id + " (" + msg.from.first_name + " " + msg.from.last_name + " aka " + msg.from.username + ") unsubscribed");
-
+    // send msg to myself to keep trace of subscription
+    unsubscriber = "🚟 Someone leave @fluffy_funicular_bot\n";
+    unsubscriber += "#unsubscriber: id=" + msg.from.id + "(" + msg.from.first_name + " " + msg.from.last_name + " aka " + msg.from.username + ")";
+    bot.sendMessage(9917772, unsubscriber);
     bot.sendMessage(msg.from.id, "Bye");
 });
 
@@ -137,9 +139,8 @@ cron.schedule('* * * * *', function () {
                         sendNewTweetToTelegram(tweet);
                     });
                 } else {
-                    console.log("    └ no new status found for " + screen_name);
+                    // console.log("    └ no new status found for " + screen_name);
                 }
-
             }
         });
     });
